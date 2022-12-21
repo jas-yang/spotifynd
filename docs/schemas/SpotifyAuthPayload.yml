@@ -1,0 +1,18 @@
+type: object
+required: 
+  - client_id
+  - response_type
+  - redirect_uri 
+  - state
+  - scope
+properties: 
+  client_id:
+    type: string
+  response_type:
+    type: string
+  redirect_uri:
+    type: string
+  state:
+    type: string 
+  scope: 
+    type: string 

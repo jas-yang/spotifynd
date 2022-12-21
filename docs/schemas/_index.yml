@@ -1,0 +1,8 @@
+User:
+  $ref: "./User.yml"
+
+Album:
+  $ref: "./Album.yml"
+
+SpotifyAuthPayload:
+  $ref: "./SpotifyAuthPayload.yml"

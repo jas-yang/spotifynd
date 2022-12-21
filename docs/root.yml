@@ -1,0 +1,76 @@
+openapi: '3.0.2'
+info:
+  title: spotifynd-api-docs
+  version: '1.0'
+  description: |
+    ## Spotifynd Docs
+servers:
+  - url: http://127.0.0.1:8080
+    description: Development
+paths:
+  /api:
+    get:
+      summary: Hello World endpoint
+      description: This endpoint can be used to test that the server is responding correctly.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                message: "Hello World!"
+  
+  /api/users/session/auth:
+    post:
+      summary: Log in user and create session.
+      description: Authorize user with Spotify OAuth endpoint and create session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                cookie:
+                  type: string
+            example:
+              token: "string"
+              cookies: "string"
+      responses:
+        '201':
+          description: 'Logged in successfully.'
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties:
+                  User: 
+                    $ref: './schemas/_index.yml#/User'
+              example:
+                User: {} #TODO
+    delete:
+      summary: Log out user and delete session.
+      description: Delete authorization for user with Spotify OAuth endpoint
+      responses:
+        '200':
+          description: 'Logged out successfully.'
+
+  /api/users/session:
+    get:
+      summary: Get the current session user, if logged in.
+      description: Returns the current populated session user. Error if not logged in.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  User:
+                    $ref: './schemas/_index.yml#/User'
+              example:
+                User: {} #TODO
+                
